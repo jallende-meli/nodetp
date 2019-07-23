@@ -1,0 +1,14 @@
+extends layout
+
+block content
+    form(method='POST' action='/agencies/search_result')
+        div.form-group
+            label(for='latitud') Latitud:
+            input#latitud.form-control(type='text', placeholder='inter lat here' name='latitude')
+        div.form-group
+            label(for='longitud') Longitud:
+            input#longitud.form-control(type='text', placeholder='insert long here' name='longitud')
+        div.form-group
+            label(for='radius') Radius:
+            input#radius.form-control(type='text', placeholder='insert radius' name='radius')
+        button.btn.btn-primary(type='submit') Buscar
