@@ -1,1 +1,60 @@
-<p>agenciesform works!</p>
+<div class="container">
+  <div class="form-container">
+    <form [formGroup]="agenciesForm" (submit)="searchAgencies()">
+      <mat-form-field class="form-input">
+        <input type="text" matInput placeholder="Latitud"
+               formControlName="latitudControl" label="Latitud">
+        <mat-error *ngIf="agenciesForm.controls['latitudControl'].hasError('required')">
+          Campo requerido
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="form-input">
+        <input  type="text" matInput placeholder="Longitud"
+                formControlName="longitudControl" label="Longitud">
+        <mat-error *ngIf="agenciesForm.controls['longitudControl'].hasError('required')">
+          Campo requerido
+        </mat-error>
+
+      </mat-form-field>
+      <br>
+      <mat-form-field class="form-input">
+        <input type="text" matInput placeholder="Radio de cercania en mts"
+               formControlName="radiusControl" label="Radio de busqueda">
+        <mat-error *ngIf="agenciesForm.controls['radiusControl'].hasError('required')">
+          Campo requerido
+        </mat-error>
+
+      </mat-form-field>
+      <br>
+      <button mat-raised-button color="primary" class="submit-form"> Buscar </button>
+    </form>
+  </div>
+
+  <div *ngIf="result">
+    <div *ngIf="loading">
+      <mat-progress-spinner
+        style="margin:0 auto;"
+        class="example-margin"
+        color="primary"
+        mode="indeterminate">
+      </mat-progress-spinner>
+    </div>
+    <div *ngIf="!loading">
+      <div class="result-box">
+        <mat-selection-list #selectionAgencies>
+          <mat-list-option *ngFor="let agency of agencies" [value]="agency"
+                           [selected]="agency.saved" (click)="selectAgency(agency)">
+            {{agency.address.address_line}}
+          </mat-list-option>
+        </mat-selection-list>
+      </div>
+      <br>
+      <div class="button-container">
+        <button mat-raised-button color="primary"
+                [disabled]="selectionAgencies.selectedOptions.selected.length < 1"
+                class="submit-form" (click)="saveAgencies(selectionAgencies.selectedOptions.selected)"> Guardar </button>
+      </div>
+    </div>
+  </div>
+</div>

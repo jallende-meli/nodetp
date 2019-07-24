@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ApiService} from '../services/services.service';
 import {Site} from '../clases/site/site';
 import {PaymentMethod} from '../clases/payment/payment-method';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-main',
@@ -13,7 +14,10 @@ export class MainComponent implements OnInit {
   paymentMethods: PaymentMethod[];
 
   selectedSite = 'MLA';
-  constructor(private apiService: ApiService) { }
+  constructor(
+    private apiService: ApiService,
+    private router: Router
+    ) { }
 
   ngOnInit() {
     this.apiService.getSites()
@@ -36,6 +40,8 @@ export class MainComponent implements OnInit {
   }
 
   onMethodSelect(event) {
-    console.log(event);
+    localStorage.setItem('site', this.selectedSite);
+    localStorage.setItem('method', event.id);
+    this.router.navigate(['/agencies/']);
   }
 }

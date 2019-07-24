@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {MatSelectModule} from '@angular/material/select';
-import {MatDividerModule, MatIconModule, MatListModule} from '@angular/material';
+import {MatButtonModule, MatDividerModule, MatIconModule, MatInputModule, MatListModule, MatProgressSpinnerModule} from '@angular/material';
 
 
 
@@ -12,13 +12,19 @@ import {MatDividerModule, MatIconModule, MatListModule} from '@angular/material'
     MatSelectModule,
     MatDividerModule,
     MatListModule,
-    MatIconModule
+    MatIconModule,
+    MatInputModule,
+    MatButtonModule,
+    MatProgressSpinnerModule,
   ],
   exports: [
     MatSelectModule,
     MatDividerModule,
     MatListModule,
-    MatIconModule
+    MatIconModule,
+    MatInputModule,
+    MatButtonModule,
+    MatProgressSpinnerModule
   ]
 })
 export class MaterialModule { }
