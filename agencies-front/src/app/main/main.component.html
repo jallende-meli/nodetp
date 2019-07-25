@@ -1,6 +1,6 @@
-<div>
+<div class="container">
   <div>
-    <mat-form-field>
+    <mat-form-field class="select-country">
       <mat-select [(value)]=selectedSite (selectionChange)="onSiteSelected($event)">
         <mat-option *ngFor="let site of sites" [value]="site.id">
           {{site.name}}
@@ -10,7 +10,7 @@
   </div>
   <div>
     <mat-list>
-      <h3 mat-subheader>Payment Methods</h3>
+      <h3 style="text-align: center; width: 800px">Payment Methods</h3>
       <mat-list-item class="item-list" *ngFor="let method of paymentMethods" (click)="onMethodSelect(method)">
         <img src="{{method.thumbnail}}">
         <h4 mat-line>{{method.name}}</h4>

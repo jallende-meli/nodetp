@@ -47,4 +47,15 @@ export class ApiService {
         console.log(error);
       });
   }
+
+  deleteAgencies(agencies: Agency[]): Observable<Agency[]> {
+    const obj = {'agencies': agencies};
+    const httpHeaders = new HttpHeaders({
+      'Content-Type' : 'application/json',
+    });
+    const options = {
+      headers: httpHeaders
+    };
+    return this.http.post<Agency[]>(this.AGENCY_URL + '/delete_agencies', obj, options);
+  }
 }

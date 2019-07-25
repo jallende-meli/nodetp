@@ -1,0 +1,16 @@
+<div style="padding: 25px">
+  <div class="result-box">
+    <mat-selection-list #selectionAgencies>
+      <mat-list-option *ngFor="let agency of agencies" [value]="agency">
+        {{agency.address.address_line}}
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+  <br>
+  <div class="button-container">
+    <button mat-raised-button color="primary"
+            *ngIf="agencies?.length > 0"
+            [disabled]="selectionAgencies.selectedOptions.selected.length < 1"
+            class="submit-form" (click)="deleteAgencies(selectionAgencies.selectedOptions.selected)"> Eliminar seleccionadas </button>
+  </div>
+</div>

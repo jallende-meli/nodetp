@@ -48,7 +48,7 @@ router.get('/:id/payment_methods/:method_id', function (req, res) {
         }
         var qs = {'near_to' : nearTo};
         var url = SITES_URL + '/' + id + '/payment_methods/' + method_id + '/agencies';
-        request.initParams()
+        request.initParams();
         request.get({url:url, qs: qs}, function (error, response) {
             if (error) {
                 res.send(error)

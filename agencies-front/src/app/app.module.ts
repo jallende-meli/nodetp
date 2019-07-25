@@ -10,12 +10,17 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AgenciesformComponent} from './agenciesform/agenciesform.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import {NavBarComponent} from './nav-bar/nav-bar.component';
+import {SavedAgenciesComponent} from './saved-agencies/saved-agencies.component';
+import {MatSnackBar, MatSnackBarModule} from '@angular/material';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
-    AgenciesformComponent
+    AgenciesformComponent,
+    NavBarComponent,
+    SavedAgenciesComponent
   ],
   imports: [
     BrowserModule,
@@ -23,11 +28,13 @@ import {ReactiveFormsModule} from '@angular/forms';
     HttpClientModule,
     MaterialModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSnackBarModule
   ],
   providers: [
     HttpClient,
-    ApiService
+    ApiService,
+    MatSnackBar
   ],
   bootstrap: [AppComponent]
 })

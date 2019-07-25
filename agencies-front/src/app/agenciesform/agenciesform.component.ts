@@ -64,16 +64,15 @@ export class AgenciesformComponent implements OnInit {
   }
 
   selectAgency(agency: Agency) {
-    if (agency.saved) {
+/*    if (agency.saved) {
       const selectedIndex = this.selectedAgencies.findIndex(x => x.id === agency.id);
       if (selectedIndex !== -1) {
         this.selectedAgencies.splice(selectedIndex, 1);
       }
       const agenciesIndex = this.agencies.findIndex(x => x.id === agency.id);
       this.agencies[agenciesIndex].saved = false;
-    }
+    }*/
   }
-
   saveAgencies(event) {
     for (const option of event) {
       if (!option.value.saved) {
@@ -85,7 +84,6 @@ export class AgenciesformComponent implements OnInit {
   getSavedAgencies() {
     this.apiService.getSavedAgencies()
       .subscribe(res => {
-        console.log(res);
         this.savedAgencies = res;
       }, error => console.log(error));
   }
