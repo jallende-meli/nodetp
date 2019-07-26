@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var request = require('request');
+var utils = require('../modules/utils');
 
 SITES_URL = "https://api.mercadolibre.com/sites";
 
@@ -37,6 +38,8 @@ router.get('/:id/payment_methods/:method_id', function (req, res) {
     var longitud = req.query.longitud;
     var latitud = req.query.latitud;
     var radius = req.query.radius;
+    var order_crit = req.query.order_crit;
+    var order = req.query.order;
     var nearTo = '';
 
     if (id && method_id) {
@@ -53,7 +56,11 @@ router.get('/:id/payment_methods/:method_id', function (req, res) {
             if (error) {
                 res.send(error)
             } else {
-                res.send(JSON.parse(response.body).results);
+                var agencies = JSON.parse(response.body).results;
+                if (order_crit) {
+                    agencies = utils.orderAgencies(agencies, order_crit, order);
+                }
+                res.send(agencies);
             }
         })
     } else {
